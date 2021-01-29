@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Add your book</h1>
+<div class="align-vertically" mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Book name</mat-label>
+    <input matInput [(ngModel)]="newBook.bookName">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Author</mat-label>
+    <input matInput [(ngModel)]="newBook.author">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Owner</mat-label>
+    <input matInput [(ngModel)]="newBook.owner">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Language</mat-label>
+    <input matInput [(ngModel)]="newBook.language">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onCancel()"> Cancel </button>
+  <button mat-raised-button (click)="onCreate()"> Add book </button>
+</div>

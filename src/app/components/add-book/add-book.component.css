@@ -1,0 +1,4 @@
+.align-vertically {
+  display: flex;
+  flex-direction: column
+}
