@@ -22,6 +22,7 @@ export class BooksOverviewComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Book>();
   columnsToDisplay = ['Book name', 'Author', 'Language', 'Owner', 'Edit', 'Delete'];
+  emptyBook:Book = new Book("","","","");
 
   public expandedElement: Book | null = null;
 
@@ -30,22 +31,40 @@ export class BooksOverviewComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.fetchBooks();
+
+  }
+
+  fetchBooks(){
     this.bookService
       .getAllBooks()
       .subscribe(
         res => this.dataSource.data = res
       );
-
   }
 
-  openDialog(): void {
+  openDialog(bookDetails : Book): void {
     const dialogRef = this.dialog.open(AddBookComponent, {
-      width: '500pw'
+      data: bookDetails,
+      width: '500px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.fetchBooks();
     });
+  }
+  
+  onEditElement(book: Book):void {
+    this.openDialog(book);
+  }
+
+  onDeleteElement(book: Book):void{
+    if(confirm("Are you sure to delete this book?")){
+      this.bookService.deleteBook(book.id).subscribe();
+      this.fetchBooks();
+    }
+    
   }
 
 }

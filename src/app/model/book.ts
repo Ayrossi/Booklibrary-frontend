@@ -1,11 +1,16 @@
 export class Book {
 
-  constructor(private _author: string,
+  private _id:number = 0;
+  constructor(
+              private _author: string,
               private _language: string,
               private _bookName: string,
               private _owner: string) {
   }
 
+  get id(): number {
+    return this._id;
+  }
 
   get author(): string {
     return this._author;
