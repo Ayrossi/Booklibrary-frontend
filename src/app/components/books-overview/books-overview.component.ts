@@ -30,22 +30,39 @@ export class BooksOverviewComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.fetchBooks();
+
+  }
+
+  fetchBooks(){
     this.bookService
       .getAllBooks()
       .subscribe(
         res => this.dataSource.data = res
       );
-
   }
 
-  openDialog(): void {
+  openDialog(bookDetails? : Book): void {
     const dialogRef = this.dialog.open(AddBookComponent, {
-      width: '500pw'
+      data: bookDetails,
+      width: '500px'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(() => {
+      this.fetchBooks();
     });
+  }
+
+  onEditElement(book: Book):void {
+    this.openDialog(book);
+  }
+
+  onDeleteElement(book: Book):void{
+    if(confirm("Are you sure to delete this book?")){
+      this.bookService.deleteBook(book.id).subscribe();
+      this.fetchBooks();
+    }
+
   }
 
 }

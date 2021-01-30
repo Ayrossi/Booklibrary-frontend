@@ -1,23 +1,25 @@
 <h1 mat-dialog-title>Add your book</h1>
-<div class="align-vertically" mat-dialog-content>
-  <mat-form-field>
-    <mat-label>Book name</mat-label>
-    <input matInput [(ngModel)]="newBook.bookName">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Author</mat-label>
-    <input matInput [(ngModel)]="newBook.author">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Owner</mat-label>
-    <input matInput [(ngModel)]="newBook.owner">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Language</mat-label>
-    <input matInput [(ngModel)]="newBook.language">
-  </mat-form-field>
-</div>
+<form #f=ngForm>
+  <div class="align-vertically" mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Book name</mat-label>
+      <input matInput name="bookName" [ngModel]="data.bookName">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Author</mat-label>
+      <input matInput name="author" [ngModel]="data.author">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Owner</mat-label>
+      <input matInput name="owner" [ngModel]="data.owner">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Language</mat-label>
+      <input matInput name="language" [ngModel]="data.language">
+    </mat-form-field>
+  </div>
+</form>
 <div mat-dialog-actions>
   <button mat-raised-button (click)="onCancel()"> Cancel </button>
-  <button mat-raised-button (click)="onCreate()"> Add book </button>
+  <button mat-raised-button (click)="onSubmit(f)">  {{ editMode ? "Modify book" : "Add book" }} </button>
 </div>
