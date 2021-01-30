@@ -12,7 +12,7 @@ import {Book} from '../../model/book';
 export class AddBookComponent implements OnInit {
 
   //public newBook: Book= new Book("", "", "", "");
-  private _editMode: boolean = false;
+  private _editMode: boolean = true;
 
 
   get editMode(): boolean {
@@ -24,8 +24,11 @@ export class AddBookComponent implements OnInit {
      private bookService: BookService) { }
 
   ngOnInit(): void {
-    if(this.data.id !== null)
-        this._editMode = true;
+    if(this.data == null){
+      this._editMode = false;
+      this.data = new Book();
+    }
+
   }
 
   onCancel(): void {
@@ -41,7 +44,5 @@ export class AddBookComponent implements OnInit {
         alert("The server did not respond")
       });
     }
-    console.log(form.value)
-    console.log(this._editMode)
   }
 }

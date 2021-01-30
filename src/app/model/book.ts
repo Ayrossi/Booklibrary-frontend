@@ -1,16 +1,28 @@
 export class Book {
 
-  private _id:number = 0;
+  private _id:number=0;
+
+  private _author: string;
+  private _language: string;
+  private _bookName: string;
+  private _owner: string;
+
+  constructor()
   constructor(
-              private _author: string,
-              private _language: string,
-              private _bookName: string,
-              private _owner: string) {
+              author?: string,
+              language?: string,
+              bookName?: string,
+              owner?: string) {
+    this._author = author ? author : "";
+    this._language = language ? language : "";
+    this._bookName = bookName ? bookName : "";
+    this._owner = owner ? owner : "";
   }
 
   get id(): number {
     return this._id;
   }
+
 
   get author(): string {
     return this._author;

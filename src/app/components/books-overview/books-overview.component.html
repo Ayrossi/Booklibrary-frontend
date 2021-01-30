@@ -28,7 +28,7 @@
     <!-- Edit Column -->
     <ng-container matColumnDef="Edit">
       <th mat-header-cell *matHeaderCellDef> Edit </th>
-      <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()"> 
+      <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
         <a (click)="onEditElement(element)" style="cursor: pointer;"><mat-icon>edit</mat-icon></a>
       </td>
     </ng-container>
@@ -71,6 +71,6 @@
   </table>
 </section>
 <section class="right">
-    <button  mat-raised-button (click)="openDialog(emptyBook)"> Add a book </button>
+    <button  mat-raised-button (click)="openDialog()"> Add a book </button>
 </section>
 

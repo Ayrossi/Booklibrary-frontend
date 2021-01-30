@@ -22,7 +22,6 @@ export class BooksOverviewComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Book>();
   columnsToDisplay = ['Book name', 'Author', 'Language', 'Owner', 'Edit', 'Delete'];
-  emptyBook:Book = new Book("","","","");
 
   public expandedElement: Book | null = null;
 
@@ -43,18 +42,17 @@ export class BooksOverviewComponent implements OnInit {
       );
   }
 
-  openDialog(bookDetails : Book): void {
+  openDialog(bookDetails? : Book): void {
     const dialogRef = this.dialog.open(AddBookComponent, {
       data: bookDetails,
       width: '500px'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(() => {
       this.fetchBooks();
     });
   }
-  
+
   onEditElement(book: Book):void {
     this.openDialog(book);
   }
@@ -64,7 +62,7 @@ export class BooksOverviewComponent implements OnInit {
       this.bookService.deleteBook(book.id).subscribe();
       this.fetchBooks();
     }
-    
+
   }
 
 }
