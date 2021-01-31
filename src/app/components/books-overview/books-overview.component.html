@@ -1,4 +1,13 @@
-<section>
+<div class="container">
+  <ul class="grid-container">
+    <li class="book-item" *ngFor="let book of books">
+      <app-book-tile></app-book-tile>
+    </li>
+  </ul>
+</div>
+
+
+<!--<section>
   <table mat-table
          [dataSource]="dataSource"
          id="bookTable"
@@ -25,7 +34,7 @@
       <td mat-cell *matCellDef="let element"> {{element.language}} </td>
     </ng-container>
 
-    <!-- Edit Column -->
+    &lt;!&ndash; Edit Column &ndash;&gt;
     <ng-container matColumnDef="Edit">
       <th mat-header-cell *matHeaderCellDef> Edit </th>
       <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
@@ -34,7 +43,7 @@
     </ng-container>
 
 
-    <!-- Delete Column -->
+    &lt;!&ndash; Delete Column &ndash;&gt;
     <ng-container matColumnDef="Delete">
       <th mat-header-cell *matHeaderCellDef> Delete </th>
       <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
@@ -43,7 +52,7 @@
     </ng-container>
 
 
-    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    &lt;!&ndash; Expanded Content Column - The detail row is made up of this one column that spans across all columns &ndash;&gt;
     <ng-container matColumnDef="expandedDetail">
       <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
         <div class="example-element-detail"
@@ -72,5 +81,5 @@
 </section>
 <section class="right">
     <button  mat-raised-button (click)="openDialog()"> Add a book </button>
-</section>
+</section>-->
 

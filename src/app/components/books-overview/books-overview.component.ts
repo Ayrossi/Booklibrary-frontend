@@ -6,10 +6,11 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {AddBookComponent} from '../add-book/add-book.component';
 import {MatDialog} from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-books-overview',
   templateUrl: './books-overview.component.html',
-  styleUrls: ['./books-overview.component.css'],
+  styleUrls: ['./books-overview.component.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0'})),
@@ -23,6 +24,8 @@ export class BooksOverviewComponent implements OnInit {
   dataSource = new MatTableDataSource<Book>();
   columnsToDisplay = ['Book name', 'Author', 'Language', 'Owner', 'Edit', 'Delete'];
 
+  books: number[] = [];
+
   public expandedElement: Book | null = null;
 
   constructor(private bookService: BookService,
@@ -30,7 +33,10 @@ export class BooksOverviewComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.fetchBooks();
+    for (let i = 0; i < 100; i++) {
+      this.books.push(i);
+    }
+    //this.fetchBooks();
 
   }
 
@@ -38,7 +44,9 @@ export class BooksOverviewComponent implements OnInit {
     this.bookService
       .getAllBooks()
       .subscribe(
-        res => this.dataSource.data = res
+        res => {
+          this.dataSource.data = res;}
+
       );
   }
 
