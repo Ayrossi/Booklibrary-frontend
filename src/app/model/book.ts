@@ -7,12 +7,11 @@ export class Book {
   private _bookName: string;
   private _owner: string;
 
-  constructor()
-  constructor(
+
+  constructor(bookName?: string,
               author?: string,
-              language?: string,
-              bookName?: string,
-              owner?: string) {
+              owner?: string,
+              language?: string) {
     this._author = author ? author : "";
     this._language = language ? language : "";
     this._bookName = bookName ? bookName : "";
