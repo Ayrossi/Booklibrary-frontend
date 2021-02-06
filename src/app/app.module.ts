@@ -15,7 +15,8 @@ import {FormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import { BookTileComponent } from './components/book-tile/book-tile.component';
-import {RouterModule} from "@angular/router";
+import {MatToolbarModule} from "@angular/material/toolbar";
+
 
 @NgModule({
   declarations: [
@@ -23,7 +24,6 @@ import {RouterModule} from "@angular/router";
     BooksOverviewComponent,
     AddBookComponent,
     BookTileComponent,
-
   ],
   imports: [
     HttpClientModule,
@@ -36,7 +36,8 @@ import {RouterModule} from "@angular/router";
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

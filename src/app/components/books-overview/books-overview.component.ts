@@ -21,12 +21,9 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class BooksOverviewComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<Book>();
-  columnsToDisplay = ['Book name', 'Author', 'Language', 'Owner', 'Edit', 'Delete'];
 
   books: number[] = [];
 
-  public expandedElement: Book | null = null;
 
   constructor(private bookService: BookService,
               private dialog: MatDialog) { }
@@ -45,7 +42,8 @@ export class BooksOverviewComponent implements OnInit {
       .getAllBooks()
       .subscribe(
         res => {
-          this.dataSource.data = res;}
+
+        }
 
       );
   }
@@ -59,18 +57,6 @@ export class BooksOverviewComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       this.fetchBooks();
     });
-  }
-
-  onEditElement(book: Book):void {
-    this.openDialog(book);
-  }
-
-  onDeleteElement(book: Book):void{
-    if(confirm("Are you sure to delete this book?")){
-      this.bookService.deleteBook(book.id).subscribe();
-      this.fetchBooks();
-    }
-
   }
 
 }

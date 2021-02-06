@@ -18,4 +18,7 @@ export class BookTileComponent implements OnInit {
     this.book = new Book('Le nectar cacheté', 'Safiur Rahman Mubarakpuri', 'Ayoub', 'FR');
   }
 
+  onClick() {
+    console.log('clicked');
+  }
 }

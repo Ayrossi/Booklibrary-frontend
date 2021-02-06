@@ -4,8 +4,8 @@
 
 .grid-container {
   display: grid;
-  grid-gap: 60px 15px;
-  width: 90vw;
+  grid-gap: 60px 2%;
+  width: 80%;
   //overflow: hidden;
   margin: 0 auto;
 
@@ -13,7 +13,8 @@
   .book-item {
     margin: 0 auto;
     padding: 0;
-    transition: all .3s ease-in-out;
+    transition: all .25s ease-in-out;
+    transition-delay: .15s;
   }
 
   .book-item:hover{
@@ -52,58 +53,3 @@
     grid-template-columns: repeat(1, minmax($tile-width, 1fr));
   }
 }
-
-
-/*
-table {
-  width: 100%;
-}
-
-tr.example-detail-row {
-  height: 0;
-}
-
-tr.example-element-row:not(.example-expanded-row):hover {
-  background: lightgrey;
-}
-
-tr.example-element-row:not(.example-expanded-row):active {
-  background: #efefef;
-}
-
-.example-element-row td {
-  border-bottom-width: 0;
-}
-
-.example-element-detail {
-  overflow: hidden;
-  display: flex;
-}
-
-.example-element-diagram {
-  min-width: 80px;
-  border: 2px solid black;
-  padding: 8px;
-  font-weight: lighter;
-  margin: 8px 0;
-  height: 104px;
-}
-
-.example-element-symbol {
-  font-weight: bold;
-  font-size: 40px;
-  line-height: normal;
-}
-
-.example-element-description {
-  padding: 16px;
-}
-
-.example-element-description-attribution {
-  opacity: 0.5;
-}
-
-.right{
-  display: flex;
-  justify-content: flex-end;
-}*/

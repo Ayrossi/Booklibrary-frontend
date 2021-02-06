@@ -1,6 +1,6 @@
 @import "src/app/shared/variable";
 
-$animation-duration: .5s;
+$animation-duration: .3s;
 
 .tile-container {
   display: inline-block;
@@ -22,7 +22,7 @@ $animation-duration: .5s;
 
   .details {
     position: absolute;
-    bottom: -60%;
+    bottom: -40%;
     left: 0;
     background-color: white;
     height: 160px;
@@ -30,10 +30,19 @@ $animation-duration: .5s;
     opacity: 0;
     border-radius: 0 0 6px 6px;
     animation-name: hide-detail;
-    animation-duration: 0.3s;
+    animation-duration: 0.1s;
     animation-timing-function: ease-in-out;
 
-
+    .details-text {
+      padding-left: 12px;
+      padding-top: 12px;
+      .title {
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-weight: 400;
+        font-size: 3rem;
+        margin: 6px 0 6px 0;
+      }
+    }
   }
 
   @keyframes show-detail {
