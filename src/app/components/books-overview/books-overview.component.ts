@@ -6,10 +6,11 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {AddBookComponent} from '../add-book/add-book.component';
 import {MatDialog} from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-books-overview',
   templateUrl: './books-overview.component.html',
-  styleUrls: ['./books-overview.component.css'],
+  styleUrls: ['./books-overview.component.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0'})),
@@ -20,17 +21,19 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class BooksOverviewComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<Book>();
-  columnsToDisplay = ['Book name', 'Author', 'Language', 'Owner', 'Edit', 'Delete'];
 
-  public expandedElement: Book | null = null;
+  books: number[] = [];
+
 
   constructor(private bookService: BookService,
               private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
-    this.fetchBooks();
+    for (let i = 0; i < 100; i++) {
+      this.books.push(i);
+    }
+    //this.fetchBooks();
 
   }
 
@@ -38,7 +41,10 @@ export class BooksOverviewComponent implements OnInit {
     this.bookService
       .getAllBooks()
       .subscribe(
-        res => this.dataSource.data = res
+        res => {
+
+        }
+
       );
   }
 
@@ -51,18 +57,6 @@ export class BooksOverviewComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       this.fetchBooks();
     });
-  }
-
-  onEditElement(book: Book):void {
-    this.openDialog(book);
-  }
-
-  onDeleteElement(book: Book):void{
-    if(confirm("Are you sure to delete this book?")){
-      this.bookService.deleteBook(book.id).subscribe();
-      this.fetchBooks();
-    }
-
   }
 
 }

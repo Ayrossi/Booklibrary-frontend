@@ -14,12 +14,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
+import { BookTileComponent } from './components/book-tile/book-tile.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BooksOverviewComponent,
-    AddBookComponent
+    AddBookComponent,
+    BookTileComponent,
   ],
   imports: [
     HttpClientModule,
@@ -32,7 +36,8 @@ import {MatInputModule} from '@angular/material/input';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
